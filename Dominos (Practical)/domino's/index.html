@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>domino's</title>
+    <link rel="stylesheet" href="./style.css">
+    <!-- sec2 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.4.1/css/swiper.min.css">
+    <!-- sec2 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    <script src="./jq/code.jquery.com_jquery-3.7.0.min.js"></script>
+
+    <!-- cursor starts cursor starts cursor starts  -->
+    <section>
+        <div id="cursor"></div>
+        <div id="cursor-border"></div>
+    </section>
+    <!-- cursor ends cursor ends cursor ends -->
+
+    <!-- cursor starts cursor starts cursor starts -->
+    <script>
+        const cursor = document.querySelector("#cursor");
+        const cursorBorder = document.querySelector("#cursor-border");
+        const cursorPos = { x: 0, y: 0 };
+        const cursorBorderPos = { x: 0, y: 0 };
+
+        document.addEventListener("mousemove", (e) => {
+            cursorPos.x = e.clientX;
+            cursorPos.y = e.clientY;
+
+            cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+        });
+
+        requestAnimationFrame(function loop() {
+            const easting = 8;
+            cursorBorderPos.x += (cursorPos.x - cursorBorderPos.x) / easting;
+            cursorBorderPos.y += (cursorPos.y - cursorBorderPos.y) / easting;
+
+            cursorBorder.style.transform = `translate(${cursorBorderPos.x}px, ${cursorBorderPos.y}px)`;
+            requestAnimationFrame(loop);
+        });
+
+        document.querySelectorAll("[data-cursor]").forEach((item) => {
+            item.addEventListener("mouseover", (e) => {
+                if (item.dataset.cursor === "pointer") {
+                    cursorBorder.style.backgroundColor = "rgba(255, 255, 255, .6)";
+                    cursorBorder.style.setProperty("--size", "30px");
+                }
+                if (item.dataset.cursor === "pointer2") {
+                    cursorBorder.style.backgroundColor = "white";
+                    cursorBorder.style.mixBlendMode = "difference";
+                    cursorBorder.style.setProperty("--size", "80px");
+                }
+            });
+            item.addEventListener("mouseout", (e) => {
+                cursorBorder.style.backgroundColor = "unset";
+                cursorBorder.style.mixBlendMode = "unset";
+                cursorBorder.style.setProperty("--size", "50px");
+            });
+        });
+
+    </script>
+    <!-- cursor ends cursor ends cursor ends -->
+
+    <header class="header">
+        <img class="logo" src="./img/Logo.png" alt="">
+
+        <ul class="menu">
+            <li class="menu1">OUR MENU</li>
+            <li class="menu2">DOMINO'S STORES</li>
+            <li class="menu3">GIFT CARD</li>
+            <li class="menu4">CORPORATE ENQUIRY</li>
+            <li class="menu5">CONTACT</li>
+        </ul>
+        <button class="header-b">Downlod App</button>
+        <button class="header-b">ORDER ONLINE NOW</button>
+    </header>
+
+    <section class="section1">
+        <div class="div1">
+            <h2 class="head1">Domino's online ordering</h2>
+            <p class="section1-p"> Yummy pizza delivered fast & fresh</p>
+            <button class="section1-b">ORDER ONLINE NOW</button>
+            <img src="./img/banner_brand_20210922.jpg" alt="">
+        </div>
+        <img src="./img/header_bg.png" alt="">
+    </section>
+
+    <h2 class="sec2-mainhead">Home</h2>
+    <h2 class="sec2-subhead">Coupons & Offers</h2>
+
+    <section class="section2">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+        <style>
+            .sample-slider {
+                width: 50%;
+            }
+
+            .sample-slider img {
+                width: 100%;
+                height: 400px;
+            }
+        </style>
+
+
+        <div class="swiper sample-slider">
+            <div class="swiper-wrapper">
+                <img class="swiper-slide" src="./img/img1.jpg" alt="Swiper">
+                <img class="swiper-slide" src="./img/img2.jpg" alt="Swiper">
+                <img class="swiper-slide" src="./img/img3.jpg" alt="Swiper">
+                <img class="swiper-slide" src="./img/img4.jpg" alt="Swiper">
+                <img class="swiper-slide" src="./img/img5.jpg" alt="Swiper">
+                <img class="swiper-slide" src="./img/img6.jpg" alt="Swiper">
+                <img class="swiper-slide" src="./img/img7.jpg" alt="Swiper">
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+
+
+        <script>
+            const swiper = new Swiper('.sample-slider', {
+                loop: true,                         //loop
+                effect: "cube",                     //make slider cube
+                cubeEffect: {
+                    slideShadows: true,             // Presence of shadows on the slide surface
+                    shadow: true,                   // Presence of shadows below the slide
+                    shadowOffset: 100,              // Position of shadows below the slide (in pixels)
+                    shadowScale: 1,                 // Size Ratio of shadows below the slide (0~1)
+                },
+                grabCursor: true,                   //grab cursor
+                speed: 1500,                        //slide speed
+                autoplay: {                         //auto play
+                    delay: 2000,
+                },
+                pagination: {                       //pagination(dots)
+                    el: '.swiper-pagination',
+                },
+                navigation: {                       //navigation(arrows)
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            })
+        </script>
+    </section>
+
+
+    <section class="section3">
+        <h2 class="sec3-head">Explore</h2>
+        <div class="sec3-maindiv">
+            <div class="sec3-div1">
+                <img src="./img/our menu.png" alt="">
+                <h2 class="div1-h">OUR MENU</h2>
+                <P class="div1-p">Explore our rang of delicious <br> pizzas, delivered in 30 minutes!</P>
+                <p class="div1-end">DISCOVER PIZZA</p>
+            </div>
+            <div class="sec3-div1">
+                <img src="./img/store.png" alt="">
+                <h2 class="div1-h">NEARBY STORE</h2>
+                <P class="div1-p">Find a domino's pizza <br> resstaurant near me</P>
+                <p class="div1-end2">DISCOVER PIZZA</p>
+            </div>
+            <div class="sec3-div1   ">
+                <img src="./img/birthday.png" alt="">
+                <h2 class="div1-h">BIRTHDAY PARTY</h2>
+                <P class="div1-p">Celebrate the joy of birthday <br> with Fresh & Hot pizza </P>
+                <p class="div1-end">DISCOVER PIZZA</p>
+            </div>
+            <div class="sec3-div1">
+                <img src="./img/catering.png" alt="">
+                <h2 class="div1-h">CATERING</h2>
+                <P class="div1-p"> Live domino's kitchen for<br> Wedding/Corporate evrnt</P>
+                <p class="div1-end3">DISCOVER PIZZA</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section4">
+        <div class="sec4-div1">
+            <img src="./img/new_app_img.png" alt="">
+            <div class="sec4-div2">
+                <h2 class="sec4-h">Unlock Exclusive Offers</h2>
+                <p class="sec4-p">For lightning fast ordering <br> experience download the Domino’s <br> app google play
+                    store</p>
+                <div class="sec4-photo">
+                    <img src="./img/app_store.png" alt="">
+                    <img src="./img/play_store.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <h2 class="sec5-mainh">Menu</h2>
+
+    <section class="section5">
+
+        <div class="container">
+
+            <button class="accordion">
+                <h2 class="sec5-subh">VEG PIZZAS</h2>
+            </button>
+            <div class="accordion-content">
+                <div class="pizzamenu">
+                    <div class="pizza">
+                        <img src="./img/margherita.jpg" alt="">
+                        <h2 class="pizzah">MARGHERITA</h2>
+                        <p class="pizzap">A hugely popular margherita, with a <br> deliciously tangy single cheese
+                            topping</p>
+                        <button class="sec5-b">ORDER NOW</button>
+                    </div>
+                    <div class="pizza">
+                        <img src="./img/Farmhouse.jpg" alt="">
+                        <h2 class="pizzah">FARM HOUSE</h2>
+                        <p class="pizzap">The ever-popular Farmhouse - loaded <br> with extra cheese... oodies of it!
+                        </p>
+                        <button class="sec5-b">ORDER NOW</button>
+                    </div>
+                    <div class="pizza">
+                        <img src="./img/Peppy_Paneer.jpg" alt="">
+                        <h2 class="pizzah">PEPPY PANEER</h2>
+                        <p class="pizzap">Chunky paneer with crisp capsicum and <br> spicy red pepper - quite a
+                            mouthful!</p>
+                        <button class="sec5-b">ORDER NOW</button>
+                    </div>
+                    <div class="pizza">
+                        <img src="./img/Corn_&_Cheese.jpg" alt="">
+                        <h2 class="pizzah">CHEESE N CORN</h2>
+                        <p class="pizzap">Cheese I Golden Corn | Cheese n Corn Pizzabr <br> Goldern Corn, Capsicum & Red
+                            Paprika
+                        </p>
+                        <button class="sec5-b">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="accordion">
+                <h2 class="sec5-subh">PIZZA MANIA</h2>
+            </button>
+            <div class="accordion-content">
+                <div class="pizzamenu">
+                    <div class="pizza">
+                        <img src="./img/chicken sausage.png" alt="">
+                        <h2 class="pizzah">CHEESY</h2>
+                        <p class="pizzap">Orange Cheddar Cheese I Mozzarella</p>
+                        <button class="sec5-b">ORDER NOW</button>
+                    </div>
+                    <div class="pizza">
+                        <img src="./img/Paneer_Special.jpg" alt="">
+                        <h2 class="pizzah">PANEER & ONION</h2>
+                        <p class="pizzap">Creamy Paneer I Onion</p>
+                        <button class="sec5-b">ORDER NOW</button>
+                    </div>
+                    <div class="pizza">
+                        <img src="./img/CapsicumVeg.jpg" alt="">
+                        <h2 class="pizzah">CAPSICUM</h2>
+                        <p class="pizzap">Capsicum</p>
+                        <button class="sec5-b">ORDER NOW</button>
+                    </div>
+                    <div class="pizza">
+                        <img src="./img/onion_veg.jpg" alt="">
+                        <h2 class="pizzah">ONION</h2>
+                        <p class="pizzap">Onion</p>
+                        <button class="sec5-b">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="accordion">
+                <h2 class="sec5-subh">NON-VEG PIZZAS</h2>
+            </button>
+            <div class="accordion-content">
+                <div class="pizzamenu">
+                    <div class="pizza">
+                        <img src="./img/Pepper_Barbeque_&_Onion.jpg" alt="">
+                        <h2 class="pizzah">PEPPER BARBECUE & ONION</h2>
+                        <p class="pizzap">Pepper Barbecue Chicken I Onion</p>
+                        <button class="sec5-b">ORDER NOW</button>
+                    </div>
+                    <div class="pizza">
+                        <img src="./img/Pepper_Barbecue chicken.png" alt="">
+                        <h2 class="pizzah">PEPPER BARBECUE CHICKEN</h2>
+                        <p class="pizzap">Pepper Barbecue Chicken I Cheese</p>
+                        <button class="sec5-b">ORDER NOW</button>
+                    </div>
+                    <div class="pizza">
+                        <img src="./img/chicken sausage.png" alt="">
+                        <h2 class="pizzah">CHICKEN SAUSAGE</h2>
+                        <p class="pizzap">Chicken Sausage & Cheese</p>
+                        <button class="sec5-b">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="accordion">
+                <h2 class="sec5-subh">SIDES & BEVERAGES</h2>
+            </button>
+            <div class="accordion-content">
+                <div class="pizzamenu">
+                    <div class="pizza">
+                        <img src="./img/BRD0030.webp" alt="">
+                        <h2 class="pizzah">PANEER TIKKA STUFFED GARLIC BREAD</h2>
+                        <p class="pizzap">Freshly Baked Stuffed Garlic Bread with Cheese, Onion and Paneer<br>Tikka
+                            fillings.
+                            Comes with a dash of Basil Parsley Sprinkle</p>
+                        <button class="sec5-b">ORDER NOW</button>
+                    </div>
+                    <div class="pizza">
+                        <img src="./img/BRD0031.webp" alt="">
+                        <h2 class="pizzah">CHICKEN PEPPERONI STUFFED GARLIC BREAD</h2>
+                        <p class="pizzap">Freshly Baked Garlic Bread stuffed with Delectable Chicken <br> Pepperoni,
+                            Cheese and
+                            sprinkled with Basil Parsley</p>
+                        <button class="sec5-b">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="accordion">
+                <h2 class="sec5-subh">PASTA</h2>
+            </button>
+            <div class="accordion-content">
+                <div class="pizzamenu">
+                    <div class="pizza">
+                        <img class="pizzaimg" src="./img/MoroccanPastaVeg_N_(1).jpg" alt="">
+                        <h2 class="pizzah">MOROCCAN SPICE PASTA VEG</h2>
+                        <p class="pizzap">Instant Fusilli Pasta, Harissa Sauce, <br> Onion, Mushroom, Olives, Parsley
+                            sprinkle
+                        </p>
+                        <button class="sec5-b">ORDER NOW</button>
+                    </div>
+                    <div class="pizza">
+                        <img class="pizzaimg" src="./img/PaneerTikkaMasala_N.jpg" alt="">
+                        <h2 class="pizzah">TIKKA MASALA PASTA VEG</h2>
+                        <p class="pizzap">Instant Fusilli Pasta, Spicy Red dressing, <br> Onion, Paneer Tikka, Parsley
+                            sprinkl
+                        </p>
+                        <button class="sec5-b">ORDER NOW</button>
+                    </div>
+                    <div class="pizza">
+                        <img class="pizzaimg" src="./img/CreamyTomatoVeg_N_(3).jpg" alt="">
+                        <h2 class="pizzah">CREAMY TOMATO PASTA VEG</h2>
+                        <p class="pizzap">Instant Fusilli Pasta, Creamy Culinary Dressing, <br> Onion, Olive, Green
+                            Capsicum,
+                            Parsley sprinkle</p>
+                        <button class="sec5-b">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+
+            const accordionBtns = document.querySelectorAll(".accordion");
+
+            accordionBtns.forEach((accordion) => {
+                accordion.onclick = function () {
+                    this.classList.toggle("is-open");
+
+                    let content = this.nextElementSibling;
+                    console.log(content);
+
+                    if (content.style.maxHeight) {
+                        //this is if the accordion is open
+                        content.style.maxHeight = null;
+                    } else {
+                        //if the accordion is currently closed
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        console.log(content.style.maxHeight);
+                    }
+                };
+            });
+        </script>
+
+
+    </section>
+
+    <h2 class="sec6-mainh">GIFT CARD</h2>
+
+    <img class="giftcardbanner" src="./img/giftcardbanner.png" alt="">
+
+    <section class="section6">
+        <h2 class="sec6-head">GIFT DELICIOUS MOMENTS WITH DOMINO'S PIZZA GIFTING SOLUTIONS</h2>
+        <div class="sec6-maind">
+            <div class="sec6-div1">
+                <h3 class="sec6-div1h">E-GIFT VOUCHER</h3>
+                <img src="./img/egiftvoucher.png" alt="">
+                <p class="sec6-div1p">Confused thinking about what to gift your family & friends on every festival? <br>
+                    Be it any occasion, bring a smile on everyone's face by gifting them a Domino's <br> Pizza E-Gift
+                    Voucher. This can be redeemed on the Mobile Site or the Mobile App.</p>
+            </div>
+
+            <div class="sec6-div1">
+                <h3 class="sec6-div1h">GIFT CARD</h3>
+                <img src="./img/giftcard.png" alt="">
+                <p class="sec6-div1p">Discover the joy of gifting with Domino's Pizza Gift Card. Gift Cards are <br>
+                    redeemable at all the Domino's Pizza outlets, Mobile Site & Mobile <br> App & can be easily reloaded
+                    whenever anyone is hungry.</p>
+            </div>
+        </div>
+    </section>
+
+    <h2 class="sec7-head">DOMINO'S PIZZA GIFTING FOR EVERY OCCASION</h2>
+
+    <section class="section7">
+
+        <!--  -->
+        <div class="slider">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <img class="swiper-slide" src="./img/carousel1.png" alt="swiper">
+                    <img class="swiper-slide" src="./img/carousel2.png" alt="swiper">
+                    <img class="swiper-slide" src="./img/carousel3.png" alt="swiper">
+                    <img class="swiper-slide" src="./img/carousel4.png" alt="swiper">
+                    <img class="swiper-slide" src="./img/carousel5.png" alt="swiper">
+                    <img class="swiper-slide" src="./img/carousel6.png" alt="swiper">
+                    <img class="swiper-slide" src="./img/carousel7.png" alt="swiper">
+                    <img class="swiper-slide" src="./img/carousel8.png" alt="swiper">
+                    <img class="swiper-slide" src="./img/carousel9.png" alt="swiper">
+                    <img class="swiper-slide" src="./img/carousel10.png" alt="swiper">
+                    <img class="swiper-slide" src="./img/carousel11.png" alt="swiper">
+                    <img class="swiper-slide" src="./img/carousel12.png" alt="swiper">
+                    <img class="swiper-slide" src="./img/carousel13.png" alt="swiper">
+                    <img class="swiper-slide" src="./img/carousel14.png" alt="swiper">
+                    <img class="swiper-slide" src="./img/carousel15.png" alt="swiper">
+                    <img class="swiper-slide" src="./img/carousel16.png" alt="swiper">
+                    <img class="swiper-slide" src="./img/carousel17.png" alt="swiper">
+                    <img class="swiper-slide" src="./img/carousel18.png" alt="swiper">
+                </div>
+
+                <!-- pagination -->
+                <div class="swiper-pagination"></div>
+
+                <!-- scrollbar -->
+                <div class="swiper-scrollbar"></div>
+
+                <!-- buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+
+        <script>
+            var $swiperSelector = $('.swiper-container');
+
+            $swiperSelector.each(function (index) {
+                var $this = $(this);
+                $this.addClass('swiper-slider-' + index);
+
+                var dragSize = $this.data('drag-size') ? $this.data('drag-size') : 50;
+                var freeMode = $this.data('free-mode') ? $this.data('free-mode') : false;
+                var loop = $this.data('loop') ? $this.data('loop') : false;
+                var slidesDesktop = $this.data('slides-desktop') ? $this.data('slides-desktop') : 4;
+                var slidesTablet = $this.data('slides-tablet') ? $this.data('slides-tablet') : 3;
+                var slidesMobile = $this.data('slides-mobile') ? $this.data('slides-mobile') : 2.5;
+                var spaceBetween = $this.data('space-between') ? $this.data('space-between') : 20;
+
+                var swiper = new Swiper('.swiper-slider-' + index, {
+                    direction: 'horizontal',
+                    loop: loop,
+                    freeMode: freeMode,
+                    spaceBetween: spaceBetween,
+                    breakpoints: {
+                        1920: {
+                            slidesPerView: slidesDesktop
+                        },
+                        992: {
+                            slidesPerView: slidesTablet
+                        },
+                        320: {
+                            slidesPerView: slidesMobile
+                        }
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev'
+                    },
+                    scrollbar: {
+                        el: '.swiper-scrollbar',
+                        draggable: true,
+                        dragSize: dragSize
+                    }
+                });
+            });
+        </script>
+    </section>
+
+    <section class="section8">
+        <h2 class="sec8-head">HOW TO REDEEM</h2>
+        <div class="sec8-maindiv">
+            <div class="sec8-div1">
+                <img src="./img/placeorder.png" alt="">
+                <h3 class="sec8-h">Place Order</h3>
+                <p>To redeem an e-Voucher, you <br> need to be on your mobile.</p>
+            </div>
+
+            <div class="sec8-div1">
+                <img src="./img/paymentmethod.png" alt="">
+                <h3 class="sec8-h ">Payment Method</h3>
+                <p class="sec8-p">Proceed to payment, select Voucher/ <br> GiftCard option, and click on Redeem</p>
+            </div>
+
+            <div class="sec8-div1">
+                <img src="./img/vouchercarddetails.png" alt="">
+                <h3 class="sec8-h">Voucher/Card Details</h3>
+                <p class="sec8-p">Enter your Voucher/Gift <br> Card number & PIN/OTP</p>
+            </div>
+
+            <div class="sec8-div1">
+                <img src="./img/makepayment.png" alt="">
+                <h3 class="sec8-h">Make Payment</h3>
+                <p class="sec8-p">Click on 'Make Payment' and pay <br> the balance using cash.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <h2 class="section9-mainh">CONTACT</h2>
+
+    <section class="section9">
+        <div class="sec9-div">
+            <h2 class="sec9-h">Domino's Customer Care Number</h2>
+            <p class="sec9-p">1800-208-1234</p>
+
+            <h2 class="sec9-h">Domino's Contact Address:</h2>
+            <p class="sec9-p">Domino''s Pizza India, <br>
+                Tower-D, Plot No. 5, <br>
+                5th Floor, Logix Techno Park, <br>
+                Sector 127, Noida - 201304, U.P.</p>
+        </div>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14020.508689690738!2d77.345793!3d28.535897!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce670f356fd21%3A0x4c3ff857e0997214!2sLogix%20Techno%20Park!5e0!3m2!1sen!2sus!4v1692362711040!5m2!1sen!2sus"
+            width="700" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <section class="section10">
+        <div class="sec10-div">
+            <img class="sec-10" src="./img/fb.webp" alt="">
+            <p class="sec10-p"> Visit our page <br> on Facebook</p>
+        </div>
+
+        <div class="sec10-div2">
+            <img class="sec-10" src="./img/gplus.webp" alt="">
+            <p class="sec10-p">Visit our page <br> on Google Plus</p>
+        </div>
+
+        <div class="sec10-div3">
+            <img , class="sec-10" src="./img/instagram.webp" alt="">
+            <p class="sec10-p">Visit our page <br> on instagram</p>
+        </div>
+
+        <div class="sec10-div4">
+            <img class="sec-10" src="./img/Twitter.webp" alt="">
+            <p class="sec10-p">Follow us on Twitter <br> for the latest updates</p>
+        </div>
+
+    </section>
+
+    <footer class="footer">
+        <ul class="footer1">
+            <h4>Menu</h4>
+            <li>Veg Pizza</li>
+            <li>Chicken Pizza</li>
+            <li>Pasta</li>
+            <li>Pizza Crust</li>
+            <li>Beverages</li>
+            <li>Pizza Mania</li>
+            <li>Burger Pizza</li>
+        </ul>
+        <ul class="footer1">
+            <h4>COMPANY</h4>
+            <li> Blog</li>
+            <li> Investor</li>
+            <li> FeedBack</li>
+            <li> Ads</li>
+        </ul>
+        <ul class="footer1">
+            <h4>PIZZA RESTAURANTS</h4>
+            <li>Restaurants Near Me</li>
+            <li>Pizza Near Me</li>
+            <li>Food Near Me</li>
+            <li>Food Delivery</li>
+            <li>Italian Food</li>
+            <li>Order Food Online</li>
+        </ul class="footer1">
+        <ul class="footer1">
+            <h4>ABOUT</h4>
+            <li>Gift card</li>
+            <li>Card Balance Enquiry</li>
+            <li>FAQ</li>
+            <li>Virtual Pizza Party</li>
+            <li>E-Gift Vouchers</li>
+        </ul>
+        <ul class="footer1">
+            <h4>LEGAL</h4>
+            <li> Disclaimer</li>
+            <li> Terms & Conditions</li>
+            <li>Privacy Policy</li>
+        </ul>
+        <div class="footer1">
+            <h4>SOCIAL MEDIA</h4>
+            <div class="icon">
+                <i class="fa-brands fa-facebook fa-beat" style="color: #3861a8;"></i>
+                <i class="fa-brands fa-twitter fa-beat" style="color: #3b6fc9;"></i>
+                <i class="fa-brands fa-instagram fa-beat"></i>
+                <i class="fa-brands fa-youtube fa-beat" style="color: #e60554;"></i>
+            </div>
+            <img src="./img/hello_dominos_20210615.png" alt="">
+        </div>
+    </footer>
+
+</body>
+
+</html>
