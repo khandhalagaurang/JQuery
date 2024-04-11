@@ -1,0 +1,40 @@
+body{
+  font-family:math;
+}
+div{
+  border: 2px solid black;
+  border-radius: 50px;
+  width: 500px;
+  padding: 20px;
+  margin: 50px auto;
+  background-image: url(../img/images.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+h1{
+  font-size: 44px;
+  text-align: center;
+  color: red;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2px;
+}
+input{
+  font-size: 30px;
+  border-radius: 10px;
+}
+input:hover{
+  background-color: rgb(249, 223, 218);
+}
+button{
+  font-size: 24px;
+  padding: 10px 30px;
+  background-color: rgb(250, 220, 74);
+  border-radius: 10px;
+}

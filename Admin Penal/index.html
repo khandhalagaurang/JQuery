@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin penal
+    </title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <script src="./jq/code.jquery.com_jquery-3.7.1.min.js"></script>
+    <header class="header">
+        <nav class="navbar">
+            <div class="icon">
+                <i class="fa-solid fa-bars" style="color: #ffffff;"></i>
+            </div>
+            <div class="div2">
+                <i class="fa-solid fa-magnifying-glass" style="color: #000000;"><span class="span1"> search google or
+                        type a url</span>
+                </i>
+            </div>
+            <div class="icon2">
+                <i class="fa-solid fa-circle-question" style="color: #ffffff;"></i>
+                <i class="fa-solid fa-envelope" style="color: #ffffff;"></i>
+                <i class="fa-solid fa-bell" style="color: #ffffff;"></i>
+            </div>
+            <div class="div1">
+                <i class="fa-solid fa-user" style="color: #d0d3d1;"> <span class="name">GAURANG</span></i>
+            </div>
+        </nav>
+    </header>
+    <aside>
+        <div class="slidbar">
+            <img class="img1" src="./img/download.png" alt="">
+            <div class="menu">
+                <i class="fa-solid fa-gauge" style="color: #ef9317;"> <span>DASHBORD</span></i>
+                <i class="fa-regular fa-clock" style="color:#d46342;"> <span>WIDGETS</span></i>
+                <i class="fa-solid fa-gem" style="color: #412c78;"> <span>ELEMENTS</span></i>
+                <i class="fa-solid fa-table" style="color: #802a97;"> <span>TABLES</span></i>
+                <i class="fa-brands fa-intercom" style="color: #097baf;"> <span>APPS</span></i>
+                <i class="fa-solid fa-briefcase" style="color: #2296f4;"> <span>PRICING TABLE</span></i>
+                <i class="fa-solid fa-paper-plane" style="color: #e12164;"> <span>CONTECT</span></i>
+                <i class="fa-regular fa-file-lines" style="color: #b07119;"> <span>ADDITIONAL PAGE</span></i>
+                <i class="fa-solid fa-map" style="color: #83239b;"> <span> MAP</span></i>
+                <i class="fa-solid fa-chart-simple" style="color: #147474;"> <span>CHARTS</span></i>
+                <i class="fa-solid fa-gear" style="color: #f79a04;"> <span>SETTING</span></i>
+            </div>
+        </div>
+        <div class="content col10">
+            <!-- chat -->
+            <div class="chart col5">
+                <canvas id='chart' width='960' height='500'></canvas>
+            </div>
+            <!-- chat -->
+            <!-- apex chart -->
+            <div class="apexchart col5">
+                <div id="wrapper">
+                    <div id="chart-area"></div>
+                    <div id="chart-bar"></div>
+
+                    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+                    <script>
+                        var data = generateDayWiseTimeSeries(new Date("22 Apr 2020").getTime(), 30, {
+                            min: 1,
+                            max: 5
+                        });
+
+                        var data2 = generateDayWiseTimeSeries(new Date("22 Apr 2020").getTime(), 30, {
+                            min: 1,
+                            max: 5
+                        });
+
+                        var data3 = generateDayWiseTimeSeries(new Date("22 Apr 2020").getTime(), 30, {
+                            min: 1,
+                            max: 5
+                        });
+
+                        var data4 = generateDayWiseTimeSeries(new Date("22 Apr 2020").getTime(), 30, {
+                            min: 1,
+                            max: 5
+                        });
+
+                        var options1 = {
+                            chart: {
+                                id: "chart2",
+                                group: 'social',
+                                type: "area",
+                                height: 230,
+                                foreColor: "#ccc",
+                                toolbar: {
+                                    autoSelected: "pan",
+                                    show: false
+                                }
+                            },
+                            colors: ["#19276F", "#00BAEC", "#939393"],
+                            stroke: {
+                                width: 3
+                            },
+                            grid: {
+                                borderColor: "#aaa",
+                                clipMarkers: false,
+                                yaxis: {
+                                    lines: {
+                                        show: false
+                                    }
+                                }
+                            },
+                            dataLabels: {
+                                enabled: false
+                            },
+                            fill: {
+                                gradient: {
+                                    enabled: true,
+                                    opacityFrom: 0.55,
+                                    opacityTo: 0
+                                }
+                            },
+                            markers: {
+                                size: 5,
+                                colors: ["#19276F", "#00BAEC", "#939393"],
+                                strokeColor: ["#19276F", "#00BAEC", "#939393"],
+                                strokeWidth: 3
+                            },
+                            series: [
+                                {
+                                    name: 'Sydney (Root)',
+                                    data: data
+                                }, {
+                                    name: 'London',
+                                    data: data2
+                                }, {
+                                    name: 'New York',
+                                    data: data3
+                                }
+                            ],
+                            tooltip: {
+                                theme: "dark"
+                            },
+                            xaxis: {
+                                type: "datetime"
+                            },
+                            yaxis: {
+                                min: 0,
+                                tickAmount: 4
+                            }
+                        };
+
+                        var chart1 = new ApexCharts(document.querySelector("#chart-area"), options1);
+
+                        chart1.render();
+
+                        var options2 = {
+                            chart: {
+                                id: "chart1",
+                                group: 'social',
+                                height: 130,
+                                type: "line",
+                                foreColor: "#ccc",
+                                brush: {
+                                    target: "chart2",
+                                    enabled: true
+                                },
+                                selection: {
+                                    enabled: true,
+                                    fill: {
+                                        opacity: 0.4
+                                    },
+                                    xaxis: {
+                                        min: new Date("10 May 2020 10:00:00").getTime(),
+                                        max: new Date("14 May 2020 10:00:00").getTime()
+                                    }
+                                }
+                            },
+                            colors: ["#FF0080", "#00BAEC"],
+                            series: [
+                                {
+                                    name: 'Aggregate',
+                                    data: data4
+                                }
+                            ],
+                            stroke: {
+                                width: 2
+                            },
+                            grid: {
+                                borderColor: "#444"
+                            },
+                            markers: {
+                                size: 0
+                            },
+                            xaxis: {
+                                type: "datetime",
+                                tooltip: {
+                                    enabled: true
+                                }
+                            },
+                            yaxis: {
+                                tickAmount: 2
+                            }
+                        };
+
+                        var chart2 = new ApexCharts(document.querySelector("#chart-bar"), options2);
+
+                        chart2.render();
+
+                        console.log(options2)
+                        function generateDayWiseTimeSeries(baseval, count, yrange) {
+                            var i = 0;
+                            var series = [];
+                            while (i < count) {
+                                var x = baseval;
+                                var y =
+                                    (Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+
+                                series.push([x, y.toFixed(2)]);
+                                baseval += 86400000;
+                                i++;
+                            }
+                            return series;
+                        }
+                    </script>
+                </div>
+            </div>
+            <!-- apex chart -->
+            <!-- celender -->
+            <div id="wrapper col6">
+
+                <div class="calender">
+                    <div class="day">S</div>
+                    <div class="day">M</div>
+                    <div class="day">T</div>
+                    <div class="day">W</div>
+                    <div class="day">T</div>
+                    <div class="day">F</div>
+                    <div class="day">S</div>
+                    <div class="date other-month">30</div>
+                    <div class="date other-month">31</div>
+                    <div class="date">1</div>
+                    <div class="date">2</div>
+                    <div class="date">3</div>
+                    <div class="date">4</div>
+                    <div class="date">5</div>
+                    <div class="date">6</div>
+                    <div class="date">7</div>
+                    <div class="date">8</div>
+                    <div class="date">9</div>
+                    <div class="date">10</div>
+                    <div class="date">11</div>
+                    <div class="date">12</div>
+                    <div class="date">13</div>
+                    <div class="date">14</div>
+                    <div class="date">15</div>
+                    <div class="date">16</div>
+                    <div class="date">17</div>
+                    <div class="date">18</div>
+                    <div class="date">19</div>
+                    <div class="date">20</div>
+                    <div class="date">21</div>
+                    <div class="date">22</div>
+                    <div class="date">23</div>
+                    <div class="date">24</div>
+                    <div class="date">25</div>
+                    <div class="date">26</div>
+                    <div class="date">27</div>
+                    <div class="date">28</div>
+                    <div class="date">29</div>
+                    <div class="date">30</div>
+                    <div class="date other-month">1</div>
+                    <div class="date other-month">2</div>
+                    <div class="date other-month">3</div>
+
+                </div>
+            </div>
+            <!-- celender -->
+            <!-- map -->
+            <div id="map_canvas"></div>
+            <div id="capture"></div>
+            <div id="kmls"></div>
+            <!-- map -->
+            <script src="https://maps.googleapis.com/maps/api/js"></script>
+        </div>
+
+    </aside>
+    <script src="./jq/code.jquery.com_jquery-3.7.1.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.bundle.js"></script>
+    <!-- chart -->
+    <script>
+        var chartElement = document.getElementById('chart');
+
+        var stackedBar = new Chart(chartElement, {
+            type: 'bar',
+            data: {
+                labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+                datasets: [{
+                    label: 'Date Set 1',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                },
+                {
+                    label: 'Data Set 2',
+                    data: [1, 9, 13, 10, 12, 13],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                },
+                {
+                    label: 'Data Set 3',
+                    data: [4, 6, 9, 6, 18, 18],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                },
+
+                ]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                    xAxes: [{
+                        stacked: true
+                    }]
+                }
+            }
+        })
+    </script>
+    <!-- chart -->
+    <!-- map -->
+    <script>
+        var map;
+        var currentkml = 0;
+        //var src = "http://data.octo.dc.gov/feeds/DCGIS/BlockGroupPly.kmz";
+
+        function initialize() {
+            var mapCanvas = document.getElementById('map_canvas');
+            var mapOptions = {
+                center: new google.maps.LatLng(38.914051, -77.010996),
+                zoom: 12,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(mapCanvas, mapOptions);
+            // loadKmlLayer(src, map);
+
+        }
+
+        function output(content) {
+            var testimonial = document.getElementById('capture');
+            testimonial.innerHTML = content;
+        }
+
+        function loadKmlLayer(src, map) {
+            var kmlLayer = new google.maps.KmlLayer(src, {
+                suppressInfoWindows: true,
+                preserveViewport: true,
+                map: map
+            });
+            google.maps.event.addListener(kmlLayer, 'click', function (event) {
+                var content = event.featureData.infoWindowHtml;
+                output(content);
+
+            });
+            return kmlLayer;
+        }
+
+        initialize();
+        var base = "http://data.octo.dc.gov";
+        var dir = "http://data.octo.dc.gov/feeds/DCGIS/";
+        var s = "";
+        var kmls = [];
+
+        jQuery.get(dir, function (e) {
+            var el = $('<div></div>'); el.html(e);
+
+            $('a', e).each(function () {
+                kmls.push(base + this.pathname);
+                s += '<li class="kml">' + this.pathname + "</li>";
+            });
+            $('#kmls').html("<ul>" + s + "</ul>");
+
+
+            //for (i=0; i<3; i++) {
+            //  loadKmlLayer(kmls[i], map);
+            //}
+
+            jQuery('.kml').click(function () {
+                if (currentkml != 0) {
+                    currentkml.setMap(null);
+                } currentkml = loadKmlLayer(base + this.innerHTML, map);
+                output(base + this.innerHTML);
+            });
+        });
+
+
+        $('ul').click(function () {
+            output(this);
+        });
+
+        // output("<h3>Click One</h3>")
+    </script>
+    <!-- map -->
+
+
+    <footer class="footer">
+        <p>
+            Copyright © 2018 Designed by html.design. All rights reserved. <br> Distributed By: ThemeWagon
+        </p>
+    </footer>
+</body>
+
+</html>

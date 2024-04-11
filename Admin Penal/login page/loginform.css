@@ -1,0 +1,85 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    color: aliceblue;
+    font-family: math;
+}
+
+.loginform {
+    margin: 50px auto;
+    padding: 50px;
+    background-image: url(../img/office-620822_640.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid black;
+    border-radius: 50px;
+}
+
+.loginfrom-head {
+    font-size: 50px;
+    font-family: math;
+}
+
+.icon {
+    font-size: 60px;
+}
+
+.icon2 {
+    font-size: 50px;
+}
+
+.loginform1 {
+    font-size: 20px;
+    font-family: math;
+}
+
+.loginform2 {
+    font-size: 18px;
+    font-family: math;
+}
+
+.button {
+    font-size: 30px;
+    width: 150px;
+    height: 40px;
+    border-radius: 50px;
+    align-items: center;
+    padding-bottom: 20px;
+    background-color: rgb(208, 220, 118);
+    background: linear-gradient(rgb(186, 224, 174), rgb(172, 181, 227));
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2px;
+}
+
+input {
+    font-size: 26px;
+    border-radius: 10px;
+}
+
+input:focus {
+    background-color: #c1f6fb;
+    background: linear-gradient(rgb(242, 235, 196), rgb(184, 234, 220), rgb(199, 164, 221));
+
+
+}
+
+.message {
+    font-size: 20px;
+}
