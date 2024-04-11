@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./headline.css">
+</head>
+
+<body>
+    <div class="page">
+        <div class="box">
+            <p class="subhead">Become anything you want, even a</p>
+            <h2 id="headline" class="headline rev">Dragon Slayer</h2>
+        </div>
+    </div>
+
+    <script src="../jq/code.jquery.com_jquery-3.7.0.min.js"></script>
+    <script>
+        // can be simplified with anime.js
+        var headline = document.getElementById("headline");
+        var $class = $('.rev')
+        var headlineOptions = [
+            'Drifter',
+            'Alchemist',
+            'Ninja',
+            'Designer'
+        ];
+        setInterval(function () {
+            $class.removeClass('rev');
+            headlineUp();
+        }, 4000);
+
+        function headlineUp() {
+            setTimeout(function () {
+                $class.addClass('rev');
+                headline.innerHTML = headlineOptions[Math.floor(Math.random() * headlineOptions.length)];
+            }, 500)
+        }
+    </script>
+</body>
+
+</html>

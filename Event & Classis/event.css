@@ -1,0 +1,18 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.main{
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid black;
+}
+
+button{
+    margin: 10px;
+    font-size: 24px;
+    border-radius: 10px;
+    padding: 10px 30px;
+    background-color: rgb(247, 122, 122);
+}

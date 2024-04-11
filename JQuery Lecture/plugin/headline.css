@@ -1,0 +1,35 @@
+*{margin:0;padding:0;}
+
+@import url('https://fonts.googleapis.com/css?family=Overpass+Mono:400,700');
+
+.page{
+  display:flex;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items:center;
+}
+
+.box{
+  text-align: center;
+  overflow:hidden;
+}
+.subhead{
+  /*tbd*/
+  font-family:'Overpass Mono';
+  text-transform:uppercase;
+  font-size:1.3rem;
+}
+/* #headline{} */
+.headline{
+  font-family: 'Overpass Mono', monospace;
+  font-weight:700;
+  font-size:5rem;
+  text-transform:uppercase;
+  will-change: tranform;
+  transform:translateY(90px);
+  transition: all .2s cubic-bezier(0,0,0,.99);
+}
+.rev{
+  transform:translateY(0px);
+}

@@ -1,0 +1,12 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.box{
+    background-color: rgb(236, 197, 197);
+    font-size: 18px;
+    width: 500px;
+    height: 200px;
+    border: 2px solid black;
+}

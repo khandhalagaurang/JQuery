@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <header class="header">
+
+        <nav class="nav">
+            <img src="./img/Logo.png" alt="">
+
+            <ul class="menu">
+                <li class="menu1">OUR MENU</li>
+                <li class="menu2">DOMINO'S STORES</li>
+                <li class="menu3">GIFT CARD</li>
+                <li class="menu4">CORPORATE ENQUIRY</li>
+                <li class="menu5">CONTACT</li>
+            </ul>
+
+            <button class="header-b">Downlod App</button>
+            <button class="header-b">ORDER ONLINE NOW</button>
+        </nav>
+
+    </header>
+
+    <section>
+        <img class="img" src="./img/1.webp" alt="">
+        <img class="img" src="./img/2.webp" alt="">
+        <img class="img" src="./img/3.webp" alt="">
+        <img class="img" src="./img/4.webp" alt="">
+    </section>
+
+    <div class="back-to-top">Back to Top</div>
+
+    <script src="./jq/code.jquery.com_jquery-3.7.0.min.js"></script>
+
+    <script>
+        var $backToTop = $(".back-to-top");
+        $backToTop.hide();
+
+
+        $(window).on('scroll', function () {
+            if ($(this).scrollTop() > 100) {
+                $backToTop.fadeIn();
+            } else {
+                $backToTop.fadeOut();
+            }
+        });
+
+        $backToTop.on('click', function (e) {
+            $("html, body").animate({ scrollTop: 0 }, 500);
+        });
+    </script>
+</body>
+
+</html>

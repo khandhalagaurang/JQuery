@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./event.css">
+</head>
+
+<body>
+    <div class="main">
+        <h2>about us</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus accusamus iure recusandae quae libero
+            temporibus a ipsam architecto rerum tenetur ab deserunt dicta aliquid, consequuntur dolor ducimus obcaecati
+            dolorum illum voluptate delectus doloremque dolorem. Eaque reprehenderit adipisci nostrum quisquam dolor
+            assumenda. At, voluptates suscipit. Ad iste architecto, labore quam quidem illo dolorem voluptatum alias
+            excepturi inventore cupiditate explicabo sit! Nemo assumenda nobis esse tempora unde? Veniam ducimus, nam
+            adipisci vel totam quis dolorum asperiores ipsum itaque velit possimus nobis laudantium atque delectus
+            similique non tempora dolore maxime quidem! Itaque id beatae culpa sequi corrupti aliquid incidunt quod
+            reprehenderit eligendi explicabo!
+        </p>
+        <h2>information</h2>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt rerum quis id quod aliquam quia
+            accusantium porro impedit molestias eaque voluptates ut iure qui totam, sapiente beatae! Tenetur, minima quo
+            facilis aspernatur id modi repellat nostrum distinctio esse saepe voluptatibus, obcaecati voluptas nam
+            blanditiis, sapiente cum quasi perspiciatis vero porro fugiat totam nisi atque nihil quod. Tempora magni
+            fuga odit iusto ratione, similique ipsa magnam saepe cum maiores itaque officiis porro animi vitae
+            repellendus, fugit alias rem aliquid pariatur assumenda. Beatae soluta corrupti ut. Fugiat quaerat ratione
+            suscipit unde neque quam eos quasi expedita, at natus reiciendis libero nesciunt et non aut praesentium
+            voluptatum numquam esse quas minus! Iste animi, fugit sequi cumque quisquam doloribus ratione necessitatibus
+            consequuntur eos modi esse? Adipisci fugiat, inventore repellat hic eligendi delectus dolores quidem omnis
+            obcaecati voluptatibus dolorem modi dolore distinctio possimus tenetur corrupti tempore labore aperiam quos
+            architecto? Ipsa ab voluptatum perferendis sed laboriosam natus officiis placeat quaerat, nam quis
+            blanditiis minus corporis, possimus, animi officia asperiores assumenda. Repellendus sequi ipsam doloribus
+            veritatis dicta fugiat nam, voluptatem quam.
+        </p>
+        <h2>bio-data</h2>
+        <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem nobis necessitatibus explicabo sunt, sit
+            molestias iste quasi nostrum! Voluptate totam possimus corporis explicabo numquam expedita laborum id ut ad
+            sequi doloribus ipsam dolorem nulla eaque dolores, officia quos incidunt! Architecto magni laboriosam culpa
+            nemo soluta voluptate impedit velit. Voluptatem asperiores doloribus molestiae reprehenderit soluta. Ea
+            saepe maiores tenetur dolorem odit modi numquam ducimus quaerat rerum voluptatum nostrum nihil
+            necessitatibus, sequi iusto aliquam omnis reprehenderit iure perspiciatis quidem id officiis blanditiis
+            repellendus. A libero tempore saepe ipsam dignissimos laborum ipsum tenetur architecto asperiores voluptas
+            sint eaque, alias vero esse et quis accusamus repellendus aspernatur quaerat deleniti in cupiditate tempora
+            nulla fugit? Quisquam nobis minus consequuntur, sunt sint beatae? Mollitia itaque eveniet consequatur, quia
+            quisquam temporibus dolorum. Eius accusamus officiis aspernatur asperiores nostrum quo nam corrupti aliquid
+            quis voluptatibus, debitis facere recusandae quos dignissimos quidem molestias. Rem omnis aperiam harum
+            tempore? Deserunt, commodi officia earum dicta esse omnis quibusdam numquam. Optio laboriosam commodi,
+            deleniti earum voluptate est voluptates quasi sunt quae molestiae nesciunt in maxime voluptatum? Commodi
+            iure quidem adipisci nesciunt hic aliquam enim, dicta itaque culpa ducimus deserunt laborum, obcaecati
+            repudiandae! Temporibus vitae officia ea nam illum. In similique modi quasi illum impedit! Consequuntur
+            omnis saepe dolorem ut sequi, suscipit delectus quasi. Eveniet velit dolor consequatur cumque hic ex
+            adipisci expedita ratione nihil perferendis quisquam et porro tempore, ut laudantium itaque ullam natus
+            facilis illum? At fugit ipsam veritatis sit odit aliquam delectus, voluptas in dicta expedita reprehenderit
+            dolorum error accusantium.
+        </p>
+        <br>
+        <br>
+        <center>
+            <label for="text">text</label>
+            <input class="one" type="text">
+            <br>
+            <br>
+            <label for="input">inout</label>
+            <input class="two" type="text">
+            <br>
+            <br>
+            <label for="output">output</label>
+            <input class="three" type="text">
+        </center>
+        <br><br><br>
+    </div>
+    <br><br><br><br>
+    <button class="btn-1">hide</button>
+    <button class="btn-2">show</button>
+    <button class="btn-3">toggle</button>
+
+    <script src="./jq/code.jquery.com_jquery-3.7.0.min.js"></script>
+    <script>
+        //keypress
+        $(document).ready(function () {
+            $('body').keypress(function () {
+                $(this).css('background-color', ' rgb(132, 120, 120)')
+
+            });
+        });
+
+        //keydown
+        $(document).ready(function () {
+            $('body').keydown(function () {
+                $(this).css('background-color', 'shadow green')
+
+            });
+        });
+
+        // keyup
+        $(document).ready(function () {
+            $('body').keyup(function () {
+                $(this).css('background-color', 'lightblue')
+
+            });
+        });
+
+        // click
+        $(document).ready(function () {
+            $('.one').click(function () {
+                $(this).css('background-color', 'yellow')
+
+            });
+        });
+        $(document).ready(function () {
+            $('.two').click(function () {
+                $(this).css('background-color', 'yellow')
+
+            });
+        });
+        $(document).ready(function () {
+            $('.three').click(function () {
+                $(this).css('background-color', 'yellow')
+
+            });
+        });
+
+        // click
+        $(document).ready(function () {
+            $('body').click(function () {
+                $(this).css('font-size', '18px')
+
+            });
+        });
+
+        //double click
+        $(document).ready(function () {
+            $('h2').dblclick(function () {
+                $(this).css('color', 'black')
+            });
+        });
+
+        // contextmenu
+        $(document).ready(function () {
+            $('body').contextmenu(function () {
+                $(this).css('background-color', 'lightgreen')
+
+            });
+        });
+
+        // hide effect
+        $('.btn-1').click(function () {
+            $('.main').hide(3000);
+        });
+
+        // show effect
+        $('.btn-2').click(function () {
+            $('.main').show(3000);
+        });
+
+        // toggle effect
+        $('.btn-3').click(function () {
+            $('.main').toggle(5000);
+        });
+
+        // mouseover
+        $(document).ready(function () {
+            $('.main').mouseover(function () {
+                $(this).css('color', 'white')
+
+            });
+        });
+
+        $(document).ready(function () {
+            $('.main').mouseover(function () {
+                $(this).css('background-color', 'green')
+
+            });
+        });
+
+        // 
+        $(document).ready(function () {
+            $('.main').mouseenter(function () {
+                $(this).css('background-color', 'black')
+
+            });
+        });
+        $(document).ready(function () {
+            $('h2').mouseenter(function () {
+                $(this).css('color', 'black')
+
+            });
+        });
+
+
+
+    </script>
+
+</body>
+
+</html>

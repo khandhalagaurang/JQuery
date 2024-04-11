@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./cou2.css">
+</head>
+
+<body>
+    <canvas></canvas>
+    <script src="../jq/code.jquery.com_jquery-3.7.0.min.js"></script>
+    <script>
+        let i = 0
+        const canvas = document.querySelector('canvas')
+        const c = canvas.getContext('2d')
+        canvas.width = innerWidth
+        canvas.height = innerHeight
+        let elastic = 4
+        let timmer = 0
+        let gravity = 1
+        let mouse = {
+            x: 0,
+            y: 0,
+            radius: 1
+        }
+        let total_space_balls = 100
+        let total_blast_partical = 100
+        let space_balls = []
+        let ball_blasts = []
+
+        //touch
+        // $(window).on("mousemove", function (e) {
+        //   mouse.x = e.clientX
+        //   mouse.y = e.clientY
+        // })
+
+        function log(str) {
+            console.log(str);
+        }
+
+        //distance b/w points
+        function distance(x1, y1, x2, y2) {
+            return Math.hypot(x2 - x1, y2 - y1)
+        }
+
+        function randomRange(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        }
+
+        //user ball
+        function user_ball(x, y, radius = 10, color = "#1bc6ee") {
+            this.x = x
+            this.y = y
+            this.radiusI = radius
+            this.radius = radius
+            this.radiusX = radius
+            this.radiusY = radius
+            this.color = color
+            this.vel = {
+                x: 3,
+                y: 3
+            }
+        }
+        user_ball.prototype.draw = function () {
+            c.beginPath()
+            //c.arc(this.x, this.y, this.radius, 0, 360, false)
+            c.ellipse(this.x, this.y, this.radiusX, this.radiusY, 0, 0, 360, false)
+            c.fillStyle = this.color
+            c.fill()
+            c.closePath()
+        }
+        user_ball.prototype.update = function () {
+            this.draw()
+            //this.x = mouse.x
+            //this.y = mouse.y
+
+            //check if user ball hit walls
+            if (this.x + this.vel.x > canvas.width - this.radius || this.x + this.vel.x < this.radius) {
+                this.vel.x = -this.vel.x
+                this.radiusY += elastic
+            } else {
+                if (this.radiusY > this.radiusI) {
+                    this.radiusY -= (elastic) / 4
+                }
+            }
+
+            if (this.y + this.vel.y > canvas.height - this.radius || this.y + this.vel.y < this.radius) {
+                this.vel.y = -this.vel.y
+                log("hit y")
+                this.radiusX += elastic
+            } else {
+                if (this.radiusX > this.radiusI) {
+                    this.radiusX -= (elastic) / 4
+                }
+            }
+            //hit end
+
+            //check if user ball hit with other
+            space_balls.forEach((ball, key) => {
+                let distance_btw_ball = distance(ball.x, ball.y, this.x, this.y)
+                if (distance_btw_ball <= ball.radius + this.radius) {
+                    //make space ball 0 radi
+                    ball.radius = 0
+                    //add blast partical
+                    for (i = 0; i < total_blast_partical; i++) {
+                        ball_blasts.push(new ball_blast(ball.x, ball.y))
+                    }
+                }
+            })
+
+            //move
+            this.x += this.vel.x
+            this.y += this.vel.y
+        }
+        let user = new user_ball(10, 10)
+        //user ball end
+
+        //space ball
+        function space_ball(x, y, radius = 10, color = "yellow") {
+            this.x = x
+            this.y = y
+            this.radius = radius
+            this.color = color
+        }
+
+        space_ball.prototype.draw = function () {
+            c.beginPath();
+            c.arc(this.x, this.y, this.radius, 0, 360, false);
+            c.fillStyle = this.color
+            //c.fillText(this.x + " - " + this.y, this.x + 10, this.y)
+            c.fill()
+            c.closePath()
+        }
+
+        space_ball.prototype.update = function () {
+            this.draw()
+        }
+
+        //genrate intilial space balls
+        for (let i = 0; i < total_space_balls; i++) {
+            let x = randomRange(50, canvas.width - 50)
+            let y = randomRange(50, canvas.height - 100)
+            space_balls.push(new space_ball(x, y))
+        }
+
+        //space ball end
+
+        //blast particals
+        function ball_blast(x, y, radius = 2, color = "yellow") {
+            this.x = x,
+                this.y = y,
+                this.radius = radius,
+                this.color = color,
+                this.vel = {
+                    x: randomRange(-10, 10),
+                    y: randomRange(-10, 10)
+                }
+            this.ttl = randomRange(10, 20)
+        }
+
+        ball_blast.prototype.draw = function () {
+            c.beginPath()
+            c.arc(this.x, this.y, this.radius, 0, 360, false)
+            c.fillStyle = this.color
+            c.fill()
+            c.closePath()
+        }
+
+        ball_blast.prototype.update = function () {
+            this.draw()
+            this.x += this.vel.x
+            this.y += this.vel.y
+            this.ttl -= 1
+        }
+        //blast particals end
+
+
+        //bottom line
+        function genrateBottom() {
+            c.beginPath()
+            c.moveTo(0, canvas.height)
+            c.lineTo(canvas.width, canvas.height)
+            c.lineWidth = 20
+            c.strokeStyle = "red"
+            c.stroke()
+            c.closePath()
+        }
+
+        //loop
+        function animation() {
+            const ani = requestAnimationFrame(animation)
+            c.clearRect(0, 0, canvas.width, canvas.height)
+
+            //space ball update
+            space_balls.forEach((ball, key) => {
+                ball.update()
+                if (ball.radius < 1) {
+                    space_balls.splice(key, 1)
+                }
+            })
+
+            //blast praticals
+            ball_blasts.forEach((blast, key) => {
+                blast.update()
+                if (blast.ttl < 1) {
+                    ball_blasts.splice(key, 1)
+                }
+            })
+
+            //user
+            user.update()
+
+            //bottom line
+            genrateBottom()
+
+            timmer++
+            //stop animation after few time
+            // if (timmer > 1000) {
+            //   cancelAnimationFrame(ani)
+            // }
+        }
+
+        animation()
+    </script>
+</body>
+
+</html>

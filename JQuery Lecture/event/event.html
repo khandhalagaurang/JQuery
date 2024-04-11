@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="close">
+        <h1 class="rem">hiiii bro</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Labore eum incidunt porro aperiam? Doloremque quis necessitatibus tenetur provident voluptates ipsum.</p>
+
+    </div>
+    <button class="open">open</button>
+    <button class="remove">remove</button>
+    <button class="submit">submit</button>
+
+    <script src="../jq/code.jquery.com_jquery-3.7.0.min.js"></script>
+    <script>
+        // hide effect
+        // $('.open').click(function(){
+        //     $('.rem').hide();
+        // });
+
+        // show effect
+        // $('.remove').click(function(){
+        //         $('.rem').show();
+        // });
+
+         // toggle effect
+        // $('.submit').click(function(){
+        //         $('.rem').toggle();
+        // });
+
+        // add class 
+        // $('.open').click(function(){
+        //     $('p').addClass('magic');
+        // });
+
+        // remove class 
+        // $('.remove').click(function(){
+        //     $('p').removeClass('magic');
+        // });
+
+        // // toggle class 
+        // $('.submit').click(function(){
+        //     $('p').toggleClass('magic');
+        // });
+        
+        // slideup class 
+        // $('.open').click(function(){
+        //     $('.close').slideUp();
+        // });
+        
+        // slide down class 
+        // $('.remove').click(function(){
+        //     $('.close').slideDown('');
+        // });
+        
+        // toggle class 
+        // $('.submit').click(function(){
+        //     $('.close').slideToggle('');
+        // });
+        
+         // slideup class 
+        $('.open').click(function(){
+            $('.close').fadeIn(5000);
+        });
+        
+        // slide down class 
+        $('.remove').click(function(){
+            $('.close').fadeOut(5000);
+        });
+        
+        // toggle class 
+        $('.submit').click(function(){
+            $('.close').fadeToggle(5000);
+        });
+
+
+    </script>
+    
+</body>
+</html>

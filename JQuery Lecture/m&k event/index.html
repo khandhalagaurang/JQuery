@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <h1>welcome to our world</h1>
+    <div class="box">
+        <h2>new joining</h2>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi sequi temporibus assumenda quod nobis
+            reiciendis a tenetur laboriosam corrupti ex et blanditiis dolor maiores voluptas, eveniet repellat
+            repellendus possimus earum!
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto fugit rerum at nihil? Consequuntur architecto
+            nulla unde aliquid adipisci officiis atque corporis culpa sunt maiores, nihil itaque ea labore aspernatur.
+        </p>
+    </div>
+
+    <script src="../jq/code.jquery.com_jquery-3.7.0.min.js"></script>
+
+    <script>
+        //keypress
+        $(document).ready(function () {
+            $('body').keypress(function () {
+                $(this).css('background-color', 'lightblue')
+
+            });
+        });
+
+        //keydown
+        $(document).ready(function () {
+            $('body').keydown(function () {
+                $(this).css('color', 'red')
+
+            });
+        });
+
+        // keyup
+        $(document).ready(function () {
+            $('body').keyup(function () {
+                $(this).css('font-size', '36px')
+
+            });
+        });
+
+        //click
+        $(document).ready(function () {
+            $('.box').click(function () {
+                $(this).css('background-color', 'yellow')
+
+            });
+        });
+
+        //double click
+        $(document).ready(function () {
+            $('p').dblclick(function () {
+                $(this).css('color', 'blue')
+
+            });
+
+            $('h2').dblclick(function () {
+                $(this).css('color', 'blue')
+
+            });
+        });
+
+        // contextmenu
+        $(document).ready(function () {
+            $('.box').contextmenu(function () {
+                $(this).css('background-color', 'pink')
+
+            });
+        });
+
+        // mouseenter
+        $(document).ready(function () {
+            $('.box').mouseenter(function () {
+                $(this).css('color', 'red')
+
+            });
+        });
+
+        // mouseover
+        $(document).ready(function () {
+            $('.box').mouseover(function () {
+                $(this).css('font-size', '20px')
+
+            });
+        });
+    </script>
+
+</body>
+
+</html>
